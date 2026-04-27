@@ -1,0 +1,32 @@
+# deps
+node_modules/
+
+# fetched schema (not committed)
+server.schema.json
+
+# logs
+*.log
+npm-debug.log*
+
+# env
+.env
+.env.local
+.env.*.local
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# editors
+.vscode/
+.idea/
+*.swp
+
+# secrets
+mcp-dns.key
+*.pem
+
+# defensive
+dist/
+build/

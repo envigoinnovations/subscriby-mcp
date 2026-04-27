@@ -1,0 +1,43 @@
+name: Publish to MCP Registry
+
+on:
+  push:
+    tags:
+      - "v*.*.*"
+  workflow_dispatch:
+
+jobs:
+  publish:
+    name: Publish to registry.modelcontextprotocol.io
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install mcp-publisher
+        run: |
+          curl -fsSL https://github.com/modelcontextprotocol/registry/releases/latest/download/mcp-publisher_linux_amd64.tar.gz \
+            | sudo tar -xz -C /usr/local/bin mcp-publisher
+          sudo chmod +x /usr/local/bin/mcp-publisher
+          mcp-publisher --version
+
+      - name: Verify version matches tag
+        run: |
+          TAG_VERSION="${GITHUB_REF_NAME#v}"
+          JSON_VERSION=$(jq -r .version server.json)
+          if [ "$TAG_VERSION" != "$JSON_VERSION" ]; then
+            echo "::error::Tag $GITHUB_REF_NAME does not match server.json version $JSON_VERSION"
+            exit 1
+          fi
+
+      - name: Validate server.json
+        run: mcp-publisher validate
+
+      - name: DNS-verified login
+        env:
+          MCP_DNS_KEY: ${{ secrets.MCP_DNS_KEY }}
+        run: mcp-publisher login dns --domain memberpass.net --private-key "$MCP_DNS_KEY"
+
+      - name: Publish
+        run: mcp-publisher publish
