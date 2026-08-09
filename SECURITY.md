@@ -8,7 +8,7 @@
 
 ## Reporting a Vulnerability
 
-Email [support@memberpass.net](mailto:support@memberpass.net).
+Email [support@subscriby.net](mailto:support@subscriby.net).
 
 Please include:
 
@@ -31,11 +31,11 @@ Encrypt with PGP if the report contains sensitive data — request the public ke
 In scope:
 
 - The contents of this repository (`server.json`, workflow, assets)
-- The remote MCP server at `https://mcp.memberpass.net`
+- The remote MCP server at `https://mcp.subscriby.net`
 
 Out of scope:
 
-- The MemberPass application itself — report those to [support@memberpass.net](mailto:support@memberpass.net) per the main app's security policy.
+- The Subscriby application itself — report those to [support@subscriby.net](mailto:support@subscriby.net) per the main app's security policy.
 - Third-party MCP clients (Claude Desktop, Cursor, VS Code, ChatGPT Desktop).
 
 ## Safe Harbor

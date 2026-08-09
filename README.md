@@ -1,50 +1,50 @@
-# MemberPass MCP Server
+# Subscriby MCP Server
 
-Connect Claude, Cursor, VS Code and other MCP clients to your MemberPass workspace.
+Connect Claude, Cursor, VS Code and other MCP clients to your Subscriby workspace.
 
-## What is MemberPass?
+## What is Subscriby?
 
-MemberPass is a Telegram-community monetisation platform — projects, tiered subscriptions, access codes, and analytics for creators. Learn more at [memberpass.net](https://www.memberpass.net).
+Subscriby is a Telegram-community monetisation platform — projects, tiered subscriptions, access codes, and analytics for creators. Learn more at [subscriby.net](https://www.subscriby.net).
 
 ## What this MCP server exposes
 
-42 tools across projects, plans, subscriptions, members, access codes, payments, webhooks, and analytics. See the full catalog at [docs.memberpass.net/mcp/tools-reference](https://docs.memberpass.net/mcp/tools-reference).
+42 tools across projects, plans, subscriptions, members, access codes, payments, webhooks, and analytics. See the full catalog at [docs.subscriby.net/mcp/tools-reference](https://docs.subscriby.net/mcp/tools-reference).
 
 ## Connect from Claude Desktop
 
-Follow [docs.memberpass.net/mcp/connecting-claude-desktop](https://docs.memberpass.net/mcp/connecting-claude-desktop).
+Follow [docs.subscriby.net/mcp/connecting-claude-desktop](https://docs.subscriby.net/mcp/connecting-claude-desktop).
 
 ## Connect from Cursor
 
-Follow [docs.memberpass.net/mcp/connecting-cursor](https://docs.memberpass.net/mcp/connecting-cursor).
+Follow [docs.subscriby.net/mcp/connecting-cursor](https://docs.subscriby.net/mcp/connecting-cursor).
 
 ## Connect from VS Code
 
-Follow [docs.memberpass.net/mcp/connecting-vscode-claude](https://docs.memberpass.net/mcp/connecting-vscode-claude).
+Follow [docs.subscriby.net/mcp/connecting-vscode-claude](https://docs.subscriby.net/mcp/connecting-vscode-claude).
 
 ## Connect from ChatGPT Desktop
 
-Follow [docs.memberpass.net/mcp/connecting-chatgpt-desktop](https://docs.memberpass.net/mcp/connecting-chatgpt-desktop).
+Follow [docs.subscriby.net/mcp/connecting-chatgpt-desktop](https://docs.subscriby.net/mcp/connecting-chatgpt-desktop).
 
 ## Authentication
 
-Paste a personal access token (`mpt_*`) in the `Authorization: Bearer` header. Mint one at `https://app.memberpass.net/settings/tokens` with the `mcp:full` ability. See [docs.memberpass.net/mcp/authentication](https://docs.memberpass.net/mcp/authentication).
+Paste a personal access token (`sbt_*`) in the `Authorization: Bearer` header. Mint one at `https://app.subscriby.net/settings/tokens` with the `mcp:full` ability. See [docs.subscriby.net/mcp/authentication](https://docs.subscriby.net/mcp/authentication).
 
 ## Required token abilities
 
-See [docs.memberpass.net/api/abilities](https://docs.memberpass.net/api/abilities).
+See [docs.subscriby.net/api/abilities](https://docs.subscriby.net/api/abilities).
 
 ## Rate limits
 
-See [docs.memberpass.net/api/rate-limiting](https://docs.memberpass.net/api/rate-limiting).
+See [docs.subscriby.net/api/rate-limiting](https://docs.subscriby.net/api/rate-limiting).
 
 ## Error envelope
 
-See [docs.memberpass.net/api/errors](https://docs.memberpass.net/api/errors).
+See [docs.subscriby.net/api/errors](https://docs.subscriby.net/api/errors).
 
 ## Async jobs
 
-See [docs.memberpass.net/mcp/async-jobs](https://docs.memberpass.net/mcp/async-jobs).
+See [docs.subscriby.net/mcp/async-jobs](https://docs.subscriby.net/mcp/async-jobs).
 
 ## Security
 
@@ -60,4 +60,4 @@ See [`CHANGELOG.md`](./CHANGELOG.md). The version field in [`server.json`](./ser
 
 ## Support
 
-[support@memberpass.net](mailto:support@memberpass.net)
+[support@subscriby.net](mailto:support@subscriby.net)

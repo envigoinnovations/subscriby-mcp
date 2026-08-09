@@ -1,21 +1,21 @@
 {
   "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
-  "name": "net.memberpass/mcp",
-  "description": "MemberPass MCP — manage projects, plans, members, payments, and analytics for Telegram creators.",
-  "version": "1.0.0",
+  "name": "net.subscriby/mcp",
+  "description": "Subscriby MCP — manage projects, plans, members, payments, and analytics for Telegram creators.",
+  "version": "2.0.0",
   "repository": {
-    "url": "https://github.com/envigoinnovations/memberpass-mcp",
+    "url": "https://github.com/envigoinnovations/subscriby-mcp",
     "source": "github"
   },
-  "websiteUrl": "https://www.memberpass.net",
+  "websiteUrl": "https://www.subscriby.net",
   "remotes": [
     {
       "type": "streamable-http",
-      "url": "https://mcp.memberpass.net",
+      "url": "https://mcp.subscriby.net",
       "headers": [
         {
           "name": "Authorization",
-          "description": "Bearer <personal-access-token>. Mint at https://app.memberpass.net/settings/tokens with the mcp:full ability.",
+          "description": "Bearer <personal-access-token>. Mint at https://app.subscriby.net/settings/tokens with the mcp:full ability.",
           "isRequired": true,
           "isSecret": true
         }

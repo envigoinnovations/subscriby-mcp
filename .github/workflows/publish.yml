@@ -37,7 +37,7 @@ jobs:
       - name: DNS-verified login
         env:
           MCP_DNS_KEY: ${{ secrets.MCP_DNS_KEY }}
-        run: mcp-publisher login dns --domain memberpass.net --private-key "$MCP_DNS_KEY"
+        run: mcp-publisher login dns --domain subscriby.net --private-key "$MCP_DNS_KEY"
 
       - name: Publish
         run: mcp-publisher publish
