@@ -1,6 +1,6 @@
 {
   "name": "@envigoinnovations/subscriby-mcp",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "private": true,
   "description": "Publishing surface for the Subscriby MCP server",
   "license": "MIT",
