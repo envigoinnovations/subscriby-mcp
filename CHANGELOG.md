@@ -2,6 +2,26 @@
 
 All notable changes to this publishing surface are documented here. The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and the project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [3.1.0] - 2026-09-03
+
+### Added
+
+- **`broadcast_message` and `preview_broadcast_audience` accept `plan_id`.** Narrows a segment to one subscription plan instead of replacing it: `customer` plus a plan addresses people paying for that plan right now, `churned` plus a plan addresses people who held it and left. The plan and the state always describe the *same* subscription, so a member paying for one plan who once trialled another is not counted as being on the other.
+
+  `broadcast_message` refuses a plan filter on a segment that cannot use one — `lead`, who never subscribed, and the pass segments, whose plan is already implied by the window. Silently dropping it would return a recipient count for a different audience than the caller described. `preview_broadcast_audience` drops it per segment instead, because its no-audience form sizes every segment in one call; each row reports the `plan_id` it actually applied.
+
+- **Four subscription-state audience segments**, addressable by both tools: `expiring_soon`, `cancelled_still_active`, `paused` and `trialing_cardless`. These describe a subscription rather than a member status, which is what the five original segments could not do — someone who cancelled but has three weeks left carries the same status as someone renewing happily.
+
+- **`expiring_within_days`**, the horizon `expiring_soon` reads. 1–90, default 7.
+
+  An auto-renewing subscription is never `expiring_soon`. A subscription's end date is rewritten to the new period end on every renewal, so a date alone describes the next *invoice*; a member is counted only once their access genuinely lapses, meaning renewal is off or the plan does not renew at all.
+
+- **`preview_broadcast_audience` reports `supports_plan_filter` and `requires_expiring_within_days` per segment**, so an agent can tell which inputs a segment will accept before sending anything.
+
+### Changed
+
+- The `broadcast.queued` and `broadcast.completed` webhook payloads now also carry `plan_id` and `expiring_within_days`, both `null` where they do not apply. No field was renamed or removed.
+
 ## [3.0.0] - 2026-08-31
 
 **Breaking.** `create_plan`, `update_plan` and `list_plans` are now discriminated on plan kind. Any agent or script sending the old flat shape must be updated.

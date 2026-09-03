@@ -8,7 +8,7 @@ Subscriby is a Telegram-community monetisation platform — projects, tiered sub
 
 ## What this MCP server exposes
 
-48 tools across projects, plans, subscriptions, members, access codes, payments, webhooks, and analytics. See the full catalog at [docs.subscriby.net/mcp/tools-reference](https://docs.subscriby.net/mcp/tools-reference).
+68 tools across projects, plans, subscriptions, members, access codes, payments, broadcasts, webhooks, and analytics. See the full catalog at [docs.subscriby.net/mcp/tools-reference](https://docs.subscriby.net/mcp/tools-reference).
 
 ## Connect from Claude Desktop
 
