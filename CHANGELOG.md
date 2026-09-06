@@ -2,6 +2,33 @@
 
 All notable changes to this publishing surface are documented here. The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and the project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [Unreleased]
+
+### Added
+
+- **Forty-nine tools**, taking the server from 68 to 117, so every creator operation the dashboard and the REST API offer is callable over MCP on the same business-logic layer and behind the same ability:
+  - projects: `delete_project`, `restore_project`
+  - coupons: `get_coupon`, `update_coupon`, `delete_coupon`, `activate_coupon`, `deactivate_coupon`
+  - plans: `get_plan`, `update_plan`, `delete_plan`, `start_next_season`
+  - pass windows: `get_pass_window`, `create_pass_window`, `cancel_pass_window`, `remind_pass_window_queue`
+  - members and subscriptions: `get_subscriber`, `get_subscription`, `remind_pass_holder`
+  - resources: `update_resource`, `activate_resource`, `deactivate_resource`
+  - bot: `disconnect_bot`
+  - payment methods: `get_payment_method`, `activate_payment_method`, `deactivate_payment_method`, `sync_payment_method_plans`, `delete_payment_method`
+  - support inbox: `assign_support_conversation`, `reopen_support_conversation`, `block_support_contact`, `unblock_support_contact`, `list_canned_replies`, `get_canned_reply`, `create_canned_reply`, `update_canned_reply`, `delete_canned_reply`, `get_support_settings`, `update_support_settings`
+  - webhooks: `create_webhook_endpoint`, `get_webhook_endpoint`, `delete_webhook_endpoint`, `rotate_webhook_endpoint_secret`, `test_webhook_endpoint`, `pause_webhook_endpoint`, `resume_webhook_endpoint`, `list_webhook_deliveries`, `get_webhook_delivery`, `retry_webhook_delivery`, `retry_dead_webhook_deliveries`
+
+  Every update tool is partial: an omitted argument keeps its stored value, and a call that changes nothing writes nothing and emits no event. Twenty-two tools are annotated destructive, so a client that honours the annotation asks a human before running them.
+
+- **The signing secret is returned once.** `create_webhook_endpoint` and `rotate_webhook_endpoint_secret` answer with `secret` in that response only; no other tool can read it back. This is the single exception to the server's rule that a secret is never surfaced.
+
+- **Nine webhook events** the write tools now announce: `project.resource.updated`, `project.payment_method.updated`, `project.payment_method.deleted`, `support.conversation.blocked`, `support.conversation.unblocked`, `support.canned_reply.created`, `support.canned_reply.updated`, `support.canned_reply.deleted` and `support.settings.updated`. Payment-method payloads name the changed credential keys and never a value; the support-settings payload never carries the relay chat id.
+
+### Changed
+
+- **`list_pass_windows` requires `pass-window:view-any`** instead of `project-subscription-plan:view-any`. Tokens minted with the plan ability keep working, because the server treats it as satisfying the pass-window one; new tokens should carry `pass-window:view-any` explicitly.
+- Read tools that returned a row inline (`list_coupons`, `list_plans`, `get_resource`, `list_payment_methods`, `list_subscribers`, `list_pass_windows`, `get_support_conversation`, `list_webhook_endpoints`) now share one row shape per entity with the matching get and write tools, so a row read from a list is identical to the same row read by id.
+
 ## [3.1.0] - 2026-09-03
 
 ### Added
