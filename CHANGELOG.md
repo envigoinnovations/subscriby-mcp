@@ -6,6 +6,8 @@ All notable changes to this publishing surface are documented here. The format f
 
 ### Added
 
+- **`reorder_plans`** pins the order a project's plans appear in on the portal and in the Telegram bot, or resets it; `create_plan` and `update_plan` accept `sales_cap`, and every plan row now carries `sales_cap`, `sales_cap_sold`, `position` and `paused_reason`. Two events accompany them: `plan.sold_out` (a plan paused itself after its last allowed purchase, or a season filled its seats) and `plan.order_changed`.
+
 - **Forty-nine tools**, taking the server from 68 to 117, so every creator operation the dashboard and the REST API offer is callable over MCP on the same business-logic layer and behind the same ability:
   - projects: `delete_project`, `restore_project`
   - coupons: `get_coupon`, `update_coupon`, `delete_coupon`, `activate_coupon`, `deactivate_coupon`
