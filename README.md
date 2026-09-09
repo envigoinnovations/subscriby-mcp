@@ -8,11 +8,11 @@ Subscriby is a Telegram-community monetisation platform — projects, tiered sub
 
 ## What this MCP server exposes
 
-118 tools across projects, plans and pass windows, coupons, subscriptions, members, the support inbox (conversations, saved replies, settings), access codes, payment methods, payments, broadcasts, resources, bots, teams, webhook endpoints and deliveries, and analytics. See the full catalog at [docs.subscriby.net/mcp/tools-reference](https://docs.subscriby.net/mcp/tools-reference).
+118 tools across projects, plans and pass windows, coupons, subscriptions, members, the support inbox (conversations, saved replies, settings), access codes, payment methods, payments, broadcasts, resources, bots, teams, webhook endpoints and deliveries, and analytics. See the full catalog at [docs.subscriby.net/mcp/tools-reference](https://docs.subscriby.net/mcp/tools-reference). Every tool declares whether it only reads or may change data, so a client can ask before running a destructive one.
 
-## Connect from Claude Desktop
+## Connect from Claude
 
-Follow [docs.subscriby.net/mcp/connecting-claude-desktop](https://docs.subscriby.net/mcp/connecting-claude-desktop).
+Add `https://mcp.subscriby.net` as a custom connector in claude.ai or Claude Desktop, or run `claude mcp add --transport http subscriby https://mcp.subscriby.net` in Claude Code, then sign in when asked. Follow [docs.subscriby.net/mcp/connecting-claude-desktop](https://docs.subscriby.net/mcp/connecting-claude-desktop).
 
 ## Connect from Cursor
 
@@ -28,11 +28,16 @@ Follow [docs.subscriby.net/mcp/connecting-chatgpt-desktop](https://docs.subscrib
 
 ## Authentication
 
-Paste a personal access token (`sbt_*`) in the `Authorization: Bearer` header. Mint one at `https://app.subscriby.net/settings/tokens` with the `mcp:full` ability. See [docs.subscriby.net/mcp/authentication](https://docs.subscriby.net/mcp/authentication).
+Two credentials work on the same endpoint:
+
+- **OAuth 2.1** — the client discovers the authorization server from the `401` challenge, registers itself dynamically (RFC 7591) and sends you to Subscriby to sign in and authorize; PKCE `S256` is required, access tokens last an hour and refresh tokens rotate. The connection acts as you, on the team you are working in. Nothing to copy.
+- **Personal access token** — `Authorization: Bearer sbt_…`, minted at `https://app.subscriby.net/settings/tokens` with only the abilities and team scope you choose.
+
+See [docs.subscriby.net/mcp/authentication](https://docs.subscriby.net/mcp/authentication).
 
 ## Required token abilities
 
-See [docs.subscriby.net/api/abilities](https://docs.subscriby.net/api/abilities).
+Every tool enforces one ability; an OAuth connection satisfies them all as the signed-in creator, a personal access token only those it carries. See [docs.subscriby.net/api/abilities](https://docs.subscriby.net/api/abilities).
 
 ## Rate limits
 

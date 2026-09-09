@@ -1,7 +1,7 @@
 {
   "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
   "name": "net.subscriby/mcp",
-  "description": "Subscriby MCP — manage projects, plans, members, payments, and analytics for Telegram creators.",
+  "description": "Subscriby MCP — manage projects, plans, members, payments, and analytics for Telegram creators. Sign in with OAuth or use a personal access token.",
   "version": "3.1.0",
   "repository": {
     "url": "https://github.com/envigoinnovations/subscriby-mcp",
@@ -15,8 +15,8 @@
       "headers": [
         {
           "name": "Authorization",
-          "description": "Bearer <personal-access-token>. Mint at https://app.subscriby.net/settings/tokens with the mcp:full ability.",
-          "isRequired": true,
+          "description": "Optional. Leave unset to sign in with OAuth 2.1 when the client asks (the server publishes its authorization metadata and registers clients dynamically). Set to \"Bearer <personal-access-token>\" to connect with a token minted at https://app.subscriby.net/settings/tokens carrying only the abilities you choose.",
+          "isRequired": false,
           "isSecret": true
         }
       ]

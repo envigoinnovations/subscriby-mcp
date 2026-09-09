@@ -6,6 +6,10 @@ All notable changes to this publishing surface are documented here. The format f
 
 ### Added
 
+- **OAuth 2.1 sign-in.** The server publishes its protected resource metadata at `https://mcp.subscriby.net/.well-known/oauth-protected-resource`, names `https://app.subscriby.net` as its authorization server, registers clients dynamically (RFC 7591) as public clients, requires PKCE `S256`, and issues one-hour access tokens with 30-day rotating refresh tokens after the creator signs in and approves a consent screen. Personal access tokens keep working on the same endpoint; the `Authorization` header in `server.json` is no longer required.
+
+- **Every tool declares whether it only reads or may change data**: the 49 write tools that carried no hint now declare `destructiveHint` (`false` for the tools that only add — creates, invitations, reminders, retries, test deliveries — `true` for every update, toggle, sync and restore), so a client that honours the annotation asks before running them. Read tools were already `readOnlyHint: true`.
+
 - **`reorder_plans`** pins the order a project's plans appear in on the portal and in the Telegram bot, or resets it; `create_plan` and `update_plan` accept `sales_cap`, and every plan row now carries `sales_cap`, `sales_cap_sold`, `position` and `paused_reason`. Two events accompany them: `plan.sold_out` (a plan paused itself after its last allowed purchase, or a season filled its seats) and `plan.order_changed`.
 
 - **Forty-nine tools**, taking the server from 68 to 117, so every creator operation the dashboard and the REST API offer is callable over MCP on the same business-logic layer and behind the same ability:
@@ -20,7 +24,7 @@ All notable changes to this publishing surface are documented here. The format f
   - support inbox: `assign_support_conversation`, `reopen_support_conversation`, `block_support_contact`, `unblock_support_contact`, `list_canned_replies`, `get_canned_reply`, `create_canned_reply`, `update_canned_reply`, `delete_canned_reply`, `get_support_settings`, `update_support_settings`
   - webhooks: `create_webhook_endpoint`, `get_webhook_endpoint`, `delete_webhook_endpoint`, `rotate_webhook_endpoint_secret`, `test_webhook_endpoint`, `pause_webhook_endpoint`, `resume_webhook_endpoint`, `list_webhook_deliveries`, `get_webhook_delivery`, `retry_webhook_delivery`, `retry_dead_webhook_deliveries`
 
-  Every update tool is partial: an omitted argument keeps its stored value, and a call that changes nothing writes nothing and emits no event. Twenty-two tools are annotated destructive, so a client that honours the annotation asks a human before running them.
+  Every update tool is partial: an omitted argument keeps its stored value, and a call that changes nothing writes nothing and emits no event. Every tool that changes or removes existing data is annotated destructive (see below), so a client that honours the annotation asks a human before running it.
 
 - **The signing secret is returned once.** `create_webhook_endpoint` and `rotate_webhook_endpoint_secret` answer with `secret` in that response only; no other tool can read it back. This is the single exception to the server's rule that a secret is never surfaced.
 
