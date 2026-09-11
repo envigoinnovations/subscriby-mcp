@@ -6,6 +6,8 @@ All notable changes to this publishing surface are documented here. The format f
 
 ### Added
 
+- **Reissue access.** `reissue_subscription_grants` revokes the grants a member holds on a subscription — every resource, or one — and has fresh ones issued, the members page's "Refresh invite links" for agents; it raises `member.resource_reissued` per resource and `member.resource_added` for each fresh grant, taking the server to 123 tools.
+
 - **Pending access.** A purchase that entitles a member to a resource on a connector they hold no account on now leaves a `pending_identity` grant in the ledger and raises `member.resource_pending`; the grant is issued, and `member.resource_added` raised for the same `grant_id`, the moment the member connects an account. `member.resource_added` itself now carries `connector`, `grant_id` and `mode`.
 
 - **Access grants.** `list_subscription_grants` reads the access ledger for one purchase — one row per resource and pass window with the connector, how access was given (`bearer_link`, `membership`, `role`, `creator_task`), where it stands (`pending_identity`, `pending`, `held`, `granted`, `revoked`, `failed`) and the classified reason for a failure — and `get_subscription` embeds the same rows as `grants`; taking the server to 122 tools.
