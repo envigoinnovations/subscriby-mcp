@@ -6,6 +6,8 @@ All notable changes to this publishing surface are documented here. The format f
 
 ### Added
 
+- **Who am I.** `get_me` describes the creator the token belongs to — the team it is scoped to (the id every other tool acts in), every team held, the platform plan and its capabilities, the accounts linked on the connectors and where alerts go — so an agent learns who it is acting as before its first write; taking the server to 121 tools.
+
 - **Member identities.** `list_member_identities` lists the platform accounts a project member has connected (connector, the platform's id, name and handle, how the link was proven, which one the project reaches first) and `unlink_member_identity` disconnects one on the creator's behalf, refused when it is the member's last way to sign in — taking the server to 120 tools. Two webhook events accompany them: `member.identity_linked` and `member.identity_unlinked`.
 
 - **OAuth 2.1 sign-in.** The server publishes its protected resource metadata at `https://mcp.subscriby.net/.well-known/oauth-protected-resource`, names `https://app.subscriby.net` as its authorization server, registers clients dynamically (RFC 7591) as public clients, requires PKCE `S256`, and issues one-hour access tokens with 30-day rotating refresh tokens after the creator signs in and approves a consent screen. Personal access tokens keep working on the same endpoint; the `Authorization` header in `server.json` is no longer required.
