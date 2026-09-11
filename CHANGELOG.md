@@ -6,6 +6,8 @@ All notable changes to this publishing surface are documented here. The format f
 
 ### Added
 
+- **Pending access.** A purchase that entitles a member to a resource on a connector they hold no account on now leaves a `pending_identity` grant in the ledger and raises `member.resource_pending`; the grant is issued, and `member.resource_added` raised for the same `grant_id`, the moment the member connects an account. `member.resource_added` itself now carries `connector`, `grant_id` and `mode`.
+
 - **Access grants.** `list_subscription_grants` reads the access ledger for one purchase — one row per resource and pass window with the connector, how access was given (`bearer_link`, `membership`, `role`, `creator_task`), where it stands (`pending_identity`, `pending`, `held`, `granted`, `revoked`, `failed`) and the classified reason for a failure — and `get_subscription` embeds the same rows as `grants`; taking the server to 122 tools.
 
 - **Who am I.** `get_me` describes the creator the token belongs to — the team it is scoped to (the id every other tool acts in), every team held, the platform plan and its capabilities, the accounts linked on the connectors and where alerts go — so an agent learns who it is acting as before its first write; taking the server to 121 tools.
