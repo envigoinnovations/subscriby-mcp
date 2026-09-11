@@ -6,6 +6,8 @@ All notable changes to this publishing surface are documented here. The format f
 
 ### Added
 
+- **Access grants.** `list_subscription_grants` reads the access ledger for one purchase — one row per resource and pass window with the connector, how access was given (`bearer_link`, `membership`, `role`, `creator_task`), where it stands (`pending_identity`, `pending`, `held`, `granted`, `revoked`, `failed`) and the classified reason for a failure — and `get_subscription` embeds the same rows as `grants`; taking the server to 122 tools.
+
 - **Who am I.** `get_me` describes the creator the token belongs to — the team it is scoped to (the id every other tool acts in), every team held, the platform plan and its capabilities, the accounts linked on the connectors and where alerts go — so an agent learns who it is acting as before its first write; taking the server to 121 tools.
 
 - **Member identities.** `list_member_identities` lists the platform accounts a project member has connected (connector, the platform's id, name and handle, how the link was proven, which one the project reaches first) and `unlink_member_identity` disconnects one on the creator's behalf, refused when it is the member's last way to sign in — taking the server to 120 tools. Two webhook events accompany them: `member.identity_linked` and `member.identity_unlinked`.
