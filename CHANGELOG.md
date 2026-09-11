@@ -6,6 +6,8 @@ All notable changes to this publishing surface are documented here. The format f
 
 ### Added
 
+- **Creator tasks.** A manual resource is a perk no connector can give, so a purchase that includes one now records a `creator_task` grant and opens a task for the creator instead of passing in silence. `list_creator_tasks` lists what a creator still has to hand over in a project (open by default, oldest first; `completed` and `all` for the record) and `complete_creator_task` marks one done, issuing the grant and raising `creator_task.completed` then `member.resource_added`; `creator_task.opened` fires when a task opens. Taking the server to 125 tools.
+
 - **Reissue access.** `reissue_subscription_grants` revokes the grants a member holds on a subscription — every resource, or one — and has fresh ones issued, the members page's "Refresh invite links" for agents; it raises `member.resource_reissued` per resource and `member.resource_added` for each fresh grant, taking the server to 123 tools.
 
 - **Pending access.** A purchase that entitles a member to a resource on a connector they hold no account on now leaves a `pending_identity` grant in the ledger and raises `member.resource_pending`; the grant is issued, and `member.resource_added` raised for the same `grant_id`, the moment the member connects an account. `member.resource_added` and `member.resource_removed` themselves now carry `connector`, `grant_id` and `mode`, and a removal marks the ledger row `revoked`.
