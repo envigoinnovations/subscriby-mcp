@@ -6,6 +6,8 @@ All notable changes to this publishing surface are documented here. The format f
 
 ### Added
 
+- **Revenue composition.** `get_revenue_composition` returns the five donuts the dashboards draw: transaction fees by payment provider, settled transactions by plan kind, gross revenue by currency in USD, payment attempts by outcome and, unwindowed because it is a balance, the monthly recurring revenue split by plan; every dataset carries its total, unit and slices sorted largest first with their shares and chart colours. Taking the server to 160 tools.
+
 - **The connector doctor.** `run_connector_doctor` verifies a project's installation of a connector and asks the connector about every resource it gates, answering one report with a finding per check (severity, the connector's own state word and sentence, whether the creator can fix it and where); the report is kept on the installation and `connector.doctor_completed` fires only when the findings changed. Taking the server to 159 tools.
 
 - **Analytics by connector.** `get_connector_analytics` returns one row per connector the creator's projects run or ever granted access on: live installations, members with a linked account (and how many linked one in the window), live and pending grants, grants issued and revoked in the window, gross revenue in USD with its share; a purchase spanning two connectors counts toward both. Taking the server to 158 tools.
