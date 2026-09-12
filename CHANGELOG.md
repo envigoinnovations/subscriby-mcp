@@ -6,6 +6,8 @@ All notable changes to this publishing surface are documented here. The format f
 
 ### Added
 
+- **The connector doctor.** `run_connector_doctor` verifies a project's installation of a connector and asks the connector about every resource it gates, answering one report with a finding per check (severity, the connector's own state word and sentence, whether the creator can fix it and where); the report is kept on the installation and `connector.doctor_completed` fires only when the findings changed. Taking the server to 159 tools.
+
 - **Analytics by connector.** `get_connector_analytics` returns one row per connector the creator's projects run or ever granted access on: live installations, members with a linked account (and how many linked one in the window), live and pending grants, grants issued and revoked in the window, gross revenue in USD with its share; a purchase spanning two connectors counts toward both. Taking the server to 158 tools.
 
 - **The notification centre.** `list_notifications` reads every alert the platform sent the creator (a sale, a support backlog, a bot or channel that went silent, a billing or security notice, a pass window, an onboarding nudge), newest first, each with its class, title, body, the dashboard screen it points at as a named route and a URL, and whether it was read; `mark_notification_read` and `mark_all_notifications_read` clear one entry or the backlog. `get_me` gained `unread_notifications`. Taking the server to 157 tools.
