@@ -6,6 +6,8 @@ All notable changes to this publishing surface are documented here. The format f
 
 ### Added
 
+- **Linking a place from an agent.** `request_resource_link` asks the creator, through the connector, to pick the channel, group or supergroup a new resource will be; the resource appears the moment they choose and `project.resource.linked` fires. A project running no connected connector is `CONNECTOR_NOT_INSTALLED`. Taking the server to 161 tools.
+
 - **Revenue composition.** `get_revenue_composition` returns the five donuts the dashboards draw: transaction fees by payment provider, settled transactions by plan kind, gross revenue by currency in USD, payment attempts by outcome and, unwindowed because it is a balance, the monthly recurring revenue split by plan; every dataset carries its total, unit and slices sorted largest first with their shares and chart colours. Taking the server to 160 tools.
 
 - **The connector doctor.** `run_connector_doctor` verifies a project's installation of a connector and asks the connector about every resource it gates, answering one report with a finding per check (severity, the connector's own state word and sentence, whether the creator can fix it and where); the report is kept on the installation and `connector.doctor_completed` fires only when the findings changed. Taking the server to 159 tools.
