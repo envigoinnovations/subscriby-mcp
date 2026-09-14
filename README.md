@@ -4,7 +4,7 @@ Connect Claude, Cursor, VS Code and other MCP clients to your Subscriby workspac
 
 ## What is Subscriby?
 
-Subscriby is a Telegram-community monetisation platform — projects, tiered subscriptions, access codes, and analytics for creators. Learn more at [subscriby.net](https://www.subscriby.net).
+Subscriby is a connector-based community monetisation platform — creators sell access to the channels, groups and servers a connector gates, with projects, tiered subscriptions, access codes, and analytics. Learn more at [subscriby.net](https://www.subscriby.net).
 
 ## What this MCP server exposes
 
