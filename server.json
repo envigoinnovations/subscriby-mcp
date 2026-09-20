@@ -1,8 +1,8 @@
 {
   "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
   "name": "net.subscriby/mcp",
-  "description": "Subscriby MCP — manage projects, plans, members, payments, and analytics for Telegram creators. Sign in with OAuth or use a personal access token.",
-  "version": "3.1.0",
+  "description": "Subscriby MCP — manage projects, plans, members, payments, connectors and analytics for creators who run paid communities on connected platforms. Sign in with OAuth or use a personal access token.",
+  "version": "4.0.0",
   "repository": {
     "url": "https://github.com/envigoinnovations/subscriby-mcp",
     "source": "github"

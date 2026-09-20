@@ -8,7 +8,7 @@ This repo is the _publishing surface_ for the Subscriby remote MCP server. The a
 - **Source of truth**: `server.json`. Every published version of Subscriby on the registry is exactly what was in `server.json` at the tagged commit.
 - **Version anchor**: `server.json#/version` is the canonical version. `CHANGELOG.md` and the `vX.Y.Z` git tag must match.
 - **Tool catalog**: lives on the running MCP server; documentation lives in `../SubscribyDocs/content/mcp/`. Do NOT mirror tool docs here.
-- **Auth**: bearer token in the `Authorization` header. The user mints an `sbt_*` personal access token in the Subscriby app settings. No OAuth on the server today.
+- **Auth**: OAuth 2.1 (the server publishes its authorization metadata and registers clients dynamically) or a bearer `sbt_*` personal access token minted in the Subscriby app settings, carrying only the abilities and team scope the creator chose.
 
 ## Conventions
 
