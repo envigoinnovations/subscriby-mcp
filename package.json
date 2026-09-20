@@ -6,6 +6,7 @@
   "license": "MIT",
   "author": "Envigo Innovations <support@subscriby.net>",
   "scripts": {
+  "prepare": "git config core.hooksPath .githooks || exit 0",
     "validate": "mcp-publisher validate",
     "format": "prettier --write \"**/*.{json,yml,yaml,md}\""
   },
