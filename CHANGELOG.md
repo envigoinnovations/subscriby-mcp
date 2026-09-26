@@ -2,6 +2,12 @@
 
 All notable changes to this publishing surface are documented here. The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and the project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [4.0.1] - 2026-09-26
+
+### Removed
+
+- The `type` that `get_project` and `list_projects` still carried on every project row. A project has no platform field (it installs connectors, and `list_connector_installations` names them); the REST project object dropped the field in 4.0.0 and the two tools now answer the same object.
+
 ## [4.0.0] - 2026-09-20
 
 ### Added
