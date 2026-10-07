@@ -2,6 +2,11 @@
 
 All notable changes to this publishing surface are documented here. The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and the project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [Unreleased]
+
+### Added
+
+- **Exporting an account.** `request_account_export` builds an archive of everything the caller's account holds: the account as `get_me` answers it, its webhook endpoints (never a signing secret), its own Subscriby plan with its invoices, and for every project the plans, resources, payment methods (never a provider key), members with their connected accounts, subscriptions with their payments, coupons, pass windows and support conversations, each as a JSON file in the shape the REST API publishes plus one workbook per project with a sheet per table. The tool answers the export row together with the async job that tracks the build (`get_job_status`). `get_account_export` reads the latest export and, while it is `ready`, a signed download link that works for 24 hours; the archive itself is removed after seven days. One export builds at a time and one may be asked for per day (`VALIDATION_FAILED` otherwise); a scheduled account deletion builds one of its own before its seven-day grace period runs out. Both need the new `account:export` ability; their REST twins are `POST` and `GET /v1/me/export`. Taking the server to 163 tools.
 ## [4.0.1] - 2026-09-26
 
 ### Removed
