@@ -18,6 +18,7 @@ All notable changes to this publishing surface are documented here. The format f
 
 ### Changed
 
+- `create_project` and `update_project` take `hide_branding`, the **Remove Subscriby Branding** switch: off by default on every plan, it takes the "Powered by Subscriby" mark off the portal page, its social card and the bot; true needs a tier with the `no_branding` capability (`TEAM_TIER_REQUIRED` otherwise), and a project whose owner lost the tier keeps the switch and shows the mark until the plan returns.
 - `get_support_settings` and `update_support_settings` carry `copilot_answers` (Subscriby Copilot answers members' own-subscription questions and what the project's Knowledge covers in the inbox and the project bot, marked as automated) and `copilot_portal` (the same Copilot in a chat on the portal page for a signed-in member) beside the other settings; omitted, each keeps its stored value.
 
 ## [4.0.1] - 2026-09-26
