@@ -4,6 +4,8 @@ All notable changes to this publishing surface are documented here. The format f
 
 ## [Unreleased]
 
+## [4.1.0] - 2026-11-05
+
 ### Added
 
 - **Broadcast history.** Every broadcast is kept as a record the send reports into, and three tools read and act on it: `list_broadcasts` pages a project's history newest first (the door it came through and who sent it, the segment with its plan, window or horizon, the tallies, and `progress`: the status in the five words every tracked piece of work uses, done of total, failed, and the line the creator reads on the dashboard's Broadcasts page), `filter` keeping to the ones still sending, the completed or the failed and `status` to one exact status; `get_broadcast` reads one with its failures by reason and the first fifty members the walk could not reach, each with the connector's reading of why and the platform's own words; and `retry_broadcast` (destructive) sends a finished broadcast again to the members it could not reach and nobody else, as a new broadcast under the old one (`parent_id`), refused while the parent is still sending, when it missed nobody, when none of the missed can be reached now or when the project has no connected bot. The reads need the new `broadcast:read` ability, the retry `broadcast:send`; the REST twins live under `/v1/projects/{project}/broadcasts`. History starts with the Subscriby release that keeps it. Taking the server to 237 tools.
