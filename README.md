@@ -14,6 +14,8 @@ Subscriby is a connector-based community monetisation platform — creators sell
 
 Add `https://mcp.subscriby.net` as a custom connector in claude.ai or Claude Desktop, or run `claude mcp add --transport http subscriby https://mcp.subscriby.net` in Claude Code, then sign in when asked. Follow [docs.subscriby.net/mcp/v1/connecting-claude-desktop](https://docs.subscriby.net/mcp/v1/connecting-claude-desktop).
 
+In Claude Code, install the [Agentic Kit](https://docs.subscriby.net/integrations/agentic-kit) instead: `/plugin marketplace add envigoinnovations/subscriby-agentic-kit`, then `/plugin install subscriby@envigo`. It bundles this server and adds a skill for every job, slash commands, read-only subagents and a guard that makes every destructive tool ask before it runs.
+
 ## Connect from Cursor
 
 Follow [docs.subscriby.net/mcp/v1/connecting-cursor](https://docs.subscriby.net/mcp/v1/connecting-cursor).
