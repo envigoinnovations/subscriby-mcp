@@ -4,6 +4,12 @@ All notable changes to this publishing surface are documented here. The format f
 
 ## [Unreleased]
 
+## [4.2.0] - 2026-11-16
+
+### Added
+
+- **Payments.** Two tools open the payment ledger the dashboard's All Transactions page shows: `list_payments` pages every payment a member made or attempted across every project the token may see, or one project, newest first, each row with the amount in the currency it was paid in (never converted), the gateway with its mode and the references it gave, the fee Subscriby calculated, why it was billed, the member and the plan, and the gateway's own words when it failed, narrowed by `status` (`successful`, `failed`, `pending`, `refunded`), `plan_id`, `method_id`, `connector`, `from`/`to` and `search`; `get_payment` reads one row by UUID. The reads need `payment:view-any` and `payment:view`; the REST twins live under `/v1/payments`. Refunds are recorded as the gateways report them and never issued here, so no tool refunds. The raw gateway payload is on neither surface. Taking the server to 242 tools.
+
 ## [4.1.0] - 2026-11-05
 
 ### Added
